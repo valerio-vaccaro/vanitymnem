@@ -69,7 +69,7 @@ optional arguments:
 ### Examples
 
 Generate a mnemonic with a derivation with beef (with upper or lower case chars)
-in a mainnet legacy address (first 1000) derivations hardened.
+in a mainnet legacy address (check on first 1000 derivations hardened).
 
 ```
 python vanitymnem.py -p "^.*[bB][eE][eE][fF]" -n main -c 1000  --hardened -a legacy -v
@@ -124,6 +124,40 @@ Derivation:            m/44'/0'/0'/253
 Legacy address:        mwFQ7VtuKDBrcLqpaoW2xu2BEefQNtuWAt
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ```
+
+Generate a mnemonic with a derivation compatible with regex `^.*[vV][aA][lL][eE]`
+in a mainnet legacy address (check on first 100 derivations hardened).
+
+```
+python vanitymnem.py -d "m/0'/0'/0'" -v -n main --hardened -a legacy
+
+'##::::'##::::'###::::'##::: ##:'####:'########:'##:::'##:'##::::'##:'##::: ##:'########:'##::::'##:
+ ##:::: ##:::'## ##::: ###:: ##:. ##::... ##..::. ##:'##:: ###::'###: ###:: ##: ##.....:: ###::'###:
+ ##:::: ##::'##:. ##:: ####: ##:: ##::::: ##:::::. ####::: ####'####: ####: ##: ##::::::: ####'####:
+ ##:::: ##:'##:::. ##: ## ## ##:: ##::::: ##::::::. ##:::: ## ### ##: ## ## ##: ######::: ## ### ##:
+. ##:: ##:: #########: ##. ####:: ##::::: ##::::::: ##:::: ##. #: ##: ##. ####: ##...:::: ##. #: ##:
+:. ## ##::: ##.... ##: ##:. ###:: ##::::: ##::::::: ##:::: ##:.:: ##: ##:. ###: ##::::::: ##:.:: ##:
+::. ###:::: ##:::: ##: ##::. ##:'####:::: ##::::::: ##:::: ##:::: ##: ##::. ##: ########: ##:::: ##:
+:::...:::::..:::::..::..::::..::....:::::..::::::::..:::::..:::::..::..::::..::........::..:::::..::
+                  VanityMnem - create your vanity mnemonics - 2020 Valerio Vaccaro
+                           https://github.com/valerio-vaccaro/vanitymnem
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Processed 315 mnemonics in 7 seconds (45 mnemonics per second).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Tested mnemonics:      315
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Seed:                  d439433f959aecaad201c18d875b978303279f5aa5b0e910a9e7825326166a013535bd99db212efbae34fbb163ae1a9a2733b1e6c836dd5d6a76aabc76d
+5e8d9
+Mnemonic:              ticket snow winner twin flip where mutual wolf great mother wild useless upset crime toilet consider rose medal notice divi
+de census canoe better include
+Master key:            xprv9s21ZrQH143K2mYECXTUUGtJfpXMbXWwf44xRAXwo6XXVcBJpaZqCZhZG9kxkuAQrSnRMwufhY2AkyGG6ihqHtbqZtvh5jh7g99GBTp1C7s
+Derivation:            m/0'/0'/0'/96'
+Legacy address:        19vbqAd4fwao3RqFvALEdS4nTgfW4ZXiuG
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+```
+
+If you run this example your mnemonics will be different.
 
 ## Check
 

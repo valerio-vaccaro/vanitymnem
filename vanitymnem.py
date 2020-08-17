@@ -74,15 +74,23 @@ if args.address not in ['native_segwit', 'nested_segwit', 'legacy']:
     exit(1)
 
 # convert derivation
-if args.derivation != "m/44'/0'/0'":
-    print("Actually we use only m/44'/0'/0' derivation.")
+if args.derivation[0] != 'm':
+    print("Use a correct derivation prefix like m/44'/0'/0'.")
     exit(1)
+
+path = []
+for c in args.derivation.split('/'):
+    der = c.split("'")
+    if (der[0] == 'm'):
+        continue
+    if len(der) == 2:
+        path = path + [0x80000000 + int(der[0])]
+    else:
+        path = path + [int(der[0])]
 
 hardened_notation = ''
 if args.hardened == True:
     hardened_notation = '\''
-
-path = [0x80000000 + 44] + [0x80000000 + 0] + [0x80000000 + 0]
 
 pattern = re.compile(args.pattern)
 i = 0
@@ -120,7 +128,7 @@ while(True):
         derived = wally.bip32_key_from_parent_path(master_key, path + [child],  wally.BIP32_FLAG_KEY_PRIVATE);
 
         if args.verbose > 1:
-            print('Derivation:            m/44\'/0\'/0\'/{}{}'.format(x, hardened_notation))
+            print('Derivation:            {}/{}{}'.format(args.derivation, x, hardened_notation))
 
         if args.address == 'native_segwit':
             # calculate native segwit address
@@ -171,7 +179,7 @@ print(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 print('Seed:                  {}'.format(seed.hex()))
 print('Mnemonic:              {}'.format(mnemonic))
 print('Master key:            {}'.format(wally.bip32_key_to_base58(master_key, 0)))
-print('Derivation:            m/44\'/0\'/0\'/{}{}'.format(x, hardened_notation))
+print('Derivation:            {}/{}{}'.format(args.derivation, x, hardened_notation))
 if args.address == 'native_segwit':
     print('Native segwit address: {}'.format(native_segwit))
 if args.address == 'nested_segwit':
