@@ -8,7 +8,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name = 'VanityMnem',
-    version = '0.0.1',
+    version = '0.0.2',
     author = 'Valerio Vaccaro',
     author_email = 'valerio.vaccaro@gmail.com',
     license = 'MIT',
